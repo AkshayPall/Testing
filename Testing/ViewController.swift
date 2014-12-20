@@ -26,6 +26,7 @@ class ViewController: UIViewController {
 
     @IBAction func sendMailButtonPressed(sender: UIButton) {
         //if((enterMessageTextField.text = nil) && (enterNameTextField.text = nil)) messageLabel.hidden = true}
+        //added comment to test commitss
         //else{
             messageLabel.hidden = false
             let stringSpace = "   - "
