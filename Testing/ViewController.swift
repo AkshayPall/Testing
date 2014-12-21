@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterNameTextField: UITextField!
     @IBOutlet weak var enterMessageTextField: UITextField!
     @IBOutlet weak var MailSent: UIButton!
+    @IBOutlet weak var SenderName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,12 +26,16 @@ class ViewController: UIViewController {
 
     @IBAction func sendMailButtonPressed(sender: UIButton) {
         if enterMessageTextField.text == "" || enterNameTextField.text == "" {
-            messageLabel.hidden = true}
+            messageLabel.hidden = true
+            SenderName.hidden = true
+        }
         //added comment to test commits
         else{
             messageLabel.hidden = false
-            messageLabel.text = enterMessageTextField.text + " -" + enterNameTextField.text
-            messageLabel.textColor = UIColor.cyanColor()
+            SenderName.hidden = false
+            messageLabel.text = enterMessageTextField.text
+            SenderName.text = enterNameTextField.text
+            messageLabel.textColor = UIColor.redColor()
             enterMessageTextField.text = ""
             enterNameTextField.text = ""
             enterMessageTextField.resignFirstResponder()
