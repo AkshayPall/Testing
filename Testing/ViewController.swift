@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var enterNameTextField: UITextField!
     @IBOutlet weak var enterMessageTextField: UITextField!
@@ -25,19 +24,30 @@ class ViewController: UIViewController {
     }
 
     @IBAction func sendMailButtonPressed(sender: UIButton) {
-        //if((enterMessageTextField.text = nil) && (enterNameTextField.text = nil)) messageLabel.hidden = true}
-        //added comment to test commitss
-        //else{
+        if enterMessageTextField.text == "" || enterNameTextField.text == "" {
+            messageLabel.hidden = true}
+        //added comment to test commits
+        else{
             messageLabel.hidden = false
-            let stringSpace = "   - "
-            messageLabel.text = enterMessageTextField.text + stringSpace + enterNameTextField.text
+            messageLabel.text = enterMessageTextField.text + " -" + enterNameTextField.text
             messageLabel.textColor = UIColor.cyanColor()
             enterMessageTextField.text = ""
             enterNameTextField.text = ""
             enterMessageTextField.resignFirstResponder()
             MailSent.setTitle("Mail Sent", forState: UIControlState.Normal)
-          //}
+            MailSent.setTitle("Tap to Send", forState: UIControlState.Highlighted)
+            delay(0.4) {
+                self.MailSent.setTitle("Send Mail", forState: UIControlState.Normal)
+                }
+        }
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
 }
-
-
